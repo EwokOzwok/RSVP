@@ -1,3 +1,22 @@
+// tokenizer.js
+/**
+ * Removes parenthetical citations from text before tokenizing.
+ * Targets patterns like (Author, 2023), (Smith et al., 2019), (pp. 23–45),
+ * (see Jones 2020), or bare year-only refs like (2021) — while preserving
+ * normal parenthetical phrases that contain regular prose.
+ */
+export function removeCitations(text) {
+  // Matches parenthetical content that looks like a citation:
+  // - Contains a year (4-digit number starting with 1 or 2)
+  // - Or starts with common citation cue words (p., pp., ibid, see, cf., et al.)
+  // - Or is a bare year like (2021)
+  // - But is NOT long prose (capped at ~60 chars to avoid removing real parentheticals)
+  return text.replace(
+    /\(\s*(?=[^)]{1,60}\))(?:[^)]*?\b(?:19|20)\d{2}\b[^)]*|(?:pp?\.|ibid\.?|see\s|cf\.?\s|et\s+al\.?)[^)]*)\)/gi,
+    ''
+  );
+}
+
 /**
  * Splits raw text into an array of "words" suitable for RSVP display.
  * Collapses all whitespace (including newlines) so punctuation stays
@@ -5,7 +24,7 @@
  */
 export function tokenize(text) {
   if (!text) return [];
-  return text
+  return removeCitations(text)
     .replace(/\s+/g, ' ')
     .trim()
     .split(' ')
