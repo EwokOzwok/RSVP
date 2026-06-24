@@ -1,5 +1,5 @@
-docker build -t rsvp .
-docker run -d --restart=always -p 1499:80 --name RSVP_App rsvp:latest
+docker build --no-cache -t rsvp .
+#docker run -d --restart=always -p 1499:80 --name RSVP_App rsvp:latest
 
 
 docker tag rsvp eeozmat/rsvp:latest
