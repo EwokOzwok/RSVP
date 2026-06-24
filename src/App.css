@@ -1,0 +1,361 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 24px;
+}
+
+/* ---------- Header ---------- */
+
+.app-header {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.app-logo {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--text-secondary);
+}
+
+.app-source {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  flex: 1;
+}
+
+.app-footer {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- RSVP stage (the signature element) ---------- */
+
+.rsvp-stage {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, var(--bg-panel) 0%, var(--bg) 78%);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+}
+
+.rsvp-tick {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 18px;
+  background: var(--accent-red-dim);
+  transform: translateX(-50%);
+}
+
+.rsvp-tick-top {
+  top: 26px;
+}
+
+.rsvp-tick-bottom {
+  bottom: 26px;
+}
+
+.rsvp-word {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  font-family: var(--font-word);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+  white-space: pre;
+}
+
+.rsvp-word-placeholder {
+  justify-content: center;
+  color: var(--text-faint);
+  font-size: 1.4rem;
+  font-family: var(--font-ui);
+}
+
+.rsvp-prefix {
+  flex: 1 1 0;
+  text-align: right;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.rsvp-suffix {
+  flex: 1 1 0;
+  text-align: left;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.rsvp-pivot {
+  flex: 0 0 auto;
+  color: var(--accent-red);
+  text-shadow: 0 0 18px var(--accent-red-glow);
+}
+
+/* ---------- Upload ---------- */
+
+.upload {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.upload-dropzone {
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--bg-panel);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.is-dragging {
+  border-color: var(--accent-red-dim);
+  background: var(--bg-panel-raised);
+}
+
+.upload-icon {
+  font-size: 22px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.upload-title {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.upload-subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.upload-error {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--accent-red);
+}
+
+.upload-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+.upload-divider::before,
+.upload-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.upload-paste {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upload-paste textarea {
+  width: 100%;
+  resize: vertical;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 12px 14px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+}
+
+.upload-paste textarea::placeholder {
+  color: var(--text-faint);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--text-secondary);
+  background: var(--bg-panel-raised);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  align-self: flex-start;
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #1a0a08;
+  font-weight: 600;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #ff5147;
+  border-color: #ff5147;
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+.btn-jump {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.btn-play {
+  min-width: 120px;
+  font-weight: 600;
+  border-color: var(--accent-red-dim);
+}
+
+.btn-play:hover:not(:disabled) {
+  border-color: var(--accent-red);
+}
+
+/* ---------- Controls ---------- */
+
+.controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: var(--track);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-red);
+  transition: width 0.12s linear;
+}
+
+.progress-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.jump-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.jump-row-label {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-right: 4px;
+}
+
+.main-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.speed-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.speed-row label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.speed-row input[type='range'] {
+  flex: 1;
+  accent-color: var(--accent-red);
+}
+
+.speed-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 520px) {
+  .rsvp-stage {
+    height: 180px;
+  }
+
+  .main-row {
+    flex-wrap: wrap;
+  }
+
+  .jump-row {
+    justify-content: center;
+  }
+}
