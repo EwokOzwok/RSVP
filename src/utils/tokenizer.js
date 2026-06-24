@@ -11,10 +11,13 @@ export function removeCitations(text) {
   // - Or starts with common citation cue words (p., pp., ibid, see, cf., et al.)
   // - Or is a bare year like (2021)
   // - But is NOT long prose (capped at ~60 chars to avoid removing real parentheticals)
-  return text.replace(
-    /\(\s*(?=[^)]{1,60}\))(?:[^)]*?\b(?:19|20)\d{2}\b[^)]*|(?:pp?\.|ibid\.?|see\s|cf\.?\s|et\s+al\.?)[^)]*)\)/gi,
+  return text
+  .replace(
+    /\(\s*(?=[^)]{1,200}\))(?:[^)]*?\b(?:19|20)\d{2}\b[^)]*|(?:pp?\.|ibid\.?|see\s|cf\.?\s|et\s+al\.?)[^)]*)\)/gi,
     ''
-  );
+  )
+  .replace(/\s+([,;:!?])/g, '$1')           // always safe — commas, colons, etc.
+  .replace(/\s+(\.)(?!\d)/g, '$1')          // period only if NOT followed by a digit
 }
 
 /**

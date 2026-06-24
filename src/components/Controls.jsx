@@ -10,6 +10,7 @@ export default function Controls({
   currentIndex,
   totalWords,
   onNewText,
+  onSeek, 
 }) {
   const progress = totalWords ? Math.min(currentIndex / totalWords, 1) : 0;
   const isFinished = totalWords > 0 && currentIndex >= totalWords;
@@ -17,9 +18,16 @@ export default function Controls({
   return (
     <div className="controls">
       <div className="progress-row">
-        <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${progress * 100}%` }} />
-        </div>
+        <input
+          type="range"
+          className="progress-track"
+          min={0}
+          max={totalWords || 1}
+          step={1}
+          value={Math.min(currentIndex, totalWords)}
+          onChange={(e) => onSeek(Number(e.target.value))}
+          style={{ '--progress': `${progress * 100}%` }}
+        />
         <span className="progress-label">
           {Math.min(currentIndex, totalWords)} / {totalWords} words
         </span>

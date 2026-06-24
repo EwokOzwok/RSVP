@@ -18,6 +18,10 @@ export default function App() {
   const hasText = words.length > 0;
   const isFinished = hasText && currentIndex >= words.length;
 
+  const handleSeek = useCallback((index) => {
+    setCurrentIndex(index);
+  }, []);
+
   const handleTextReady = useCallback((text, name) => {
     const tokens = tokenize(text);
     setWords(tokens);
@@ -113,6 +117,7 @@ export default function App() {
               currentIndex={currentIndex}
               totalWords={words.length}
               onNewText={handleNewText}
+              onSeek={handleSeek}
             />
           </>
         )}
