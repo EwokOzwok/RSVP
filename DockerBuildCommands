@@ -1,0 +1,9 @@
+docker build -t rsvp .
+docker run -d --restart=always -p 1499:80 --name RSVP_App rsvp:latest
+
+
+docker tag rsvp eeozmat/rsvp:latest
+docker push eeozmat/rsvp:latest
+
+docker pull eeozmat/rsvp:latest
+docker run -d --restart=always -p 1499:80 --name RSVP_App eeozmat/rsvp:latest
