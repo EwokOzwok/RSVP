@@ -1,4 +1,6 @@
-docker build --no-cache -t rsvp .
+docker rmi eeozmat/rsvp:latest
+docker rmi rsvp:latest
+docker build --pull --no-cache -t rsvp .
 #docker run -d --restart=always -p 1499:80 --name RSVP_App rsvp:latest
 
 
