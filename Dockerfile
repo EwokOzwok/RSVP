@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 
 # ---- Serve stage ----
-FROM nginx:1.27-alpine AS serve
+FROM nginx:1.30.7-alpine AS serve
 
 # Custom config: SPA fallback to index.html + gzip for the JS/CSS bundles
 COPY nginx.conf /etc/nginx/conf.d/default.conf
